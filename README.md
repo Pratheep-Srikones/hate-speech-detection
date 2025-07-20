@@ -1,6 +1,6 @@
 # Hate Speech Detection using Machine Learning
 
-A machine learning-based classifier that detects hate speech, offensive language, and neutral content in tweets. Built with scikit-learn and NLTK, this project demonstrates effective preprocessing, class balancing, and Random Forest classification to achieve high accuracy.
+A machine learning-based classifier that detects hate speech, offensive language, and neutral content in tweets. Built with scikit-learn, NLTK, and FastAPI, this project demonstrates effective preprocessing, class balancing, and Random Forest classification to achieve high accuracy.
 
 ## Project Structure
 
@@ -8,7 +8,7 @@ A machine learning-based classifier that detects hate speech, offensive language
 pratheep-srikones-hate-speech-detection/
 ├── hate-speech.csv                 # Raw dataset
 ├── hate_speech_detection.ipynb     # Development notebook
-├── main.py                         # CLI for inference
+├── main.py                         # FastAPI app for inference
 ├── requirements.txt                # Project dependencies
 ├── utils.py                        # Preprocessing and helper functions
 └── models/
@@ -22,7 +22,7 @@ pratheep-srikones-hate-speech-detection/
 * Class balancing using synonym-based augmentation
 * TF-IDF vectorization (unigrams + bigrams)
 * Random Forest classifier for multiclass classification
-* Evaluation with precision, recall, F1-score, and confusion matrix
+* FastAPI-based server for easy model deployment and inference
 
 ## Setup Instructions
 
@@ -46,19 +46,28 @@ pratheep-srikones-hate-speech-detection/
    pip install -r requirements.txt
    ```
 
-4. Run the script:
+4. Start the FastAPI server:
 
    ```bash
-   python main.py "Your tweet text here"
+   uvicorn main:app --reload
    ```
 
 ## Usage
 
-Use the CLI to predict the class of a tweet:
+Once the server is running, use a tool like `curl`, Postman, or a browser to send a request:
+
+Example using `curl`:
 
 ```bash
-$ python main.py "please don't kill animals"
-Prediction: Neutral
+curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json" -d '{"text": "Please be kind to others"}'
+```
+
+Response:
+
+```json
+{
+  "prediction": "Neutral"
+}
 ```
 
 ## Model Performance
@@ -76,8 +85,9 @@ Prediction: Neutral
 * [Scikit-learn Documentation](https://scikit-learn.org/stable/)
 * [NLPAug - Data Augmentation for NLP](https://github.com/makcedward/nlpaug)
 * [TF-IDF Vectorization](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction)
+* [FastAPI Documentation](https://fastapi.tiangolo.com/)
 
-
+## Author
 
 Developed by Pratheep Srikones
 
