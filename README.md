@@ -86,6 +86,7 @@ Response:
 * [NLPAug - Data Augmentation for NLP](https://github.com/makcedward/nlpaug)
 * [TF-IDF Vectorization](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction)
 * [FastAPI Documentation](https://fastapi.tiangolo.com/)
+* [GeeksForGeeks Comprehensive similar tutorial](https://www.geeksforgeeks.org/deep-learning/hate-speech-detection-using-deep-learning/)
 
 ## Author
 
